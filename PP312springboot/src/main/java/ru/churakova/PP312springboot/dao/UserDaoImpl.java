@@ -1,17 +1,16 @@
 package ru.churakova.PP312springboot.dao;
 
-
-import org.springframework.stereotype.Repository;
 import ru.churakova.PP312springboot.models.User;
+import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Repository;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.TypedQuery;
 import java.util.List;
 
-
 @Repository
+@Component
 public class UserDaoImpl implements UserDao {
-
 
     @PersistenceContext
     private EntityManager entityManager;
@@ -20,7 +19,9 @@ public class UserDaoImpl implements UserDao {
     @Override
     public List<User> getUsers() {
 
-        TypedQuery<User> query = entityManager.createQuery("select u from User u", User.class);
+        String jpql = "select u from User u";
+        TypedQuery<User> query = entityManager.createQuery(jpql, User.class);
+
         return query.getResultList();
     }
 
