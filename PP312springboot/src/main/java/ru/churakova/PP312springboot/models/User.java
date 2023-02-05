@@ -1,10 +1,10 @@
 package ru.churakova.PP312springboot.models;
 
 
-import org.hibernate.validator.constraints.Email;
-import org.hibernate.validator.constraints.NotEmpty;
-import javax.validation.constraints.Min;
-import javax.persistence.*;
+import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.Min;
+import jakarta.persistence.*;
+import jakarta.validation.constraints.NotEmpty;
 
 
 @Entity
@@ -12,7 +12,7 @@ import javax.persistence.*;
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    private Integer id;
 
     @Column(name = "name")
     @NotEmpty(message = "Name should not be empty")
@@ -32,7 +32,6 @@ public class User {
     private String email;
 
     public User() {
-
     }
 
     public User(String name, String surname, Long age, String email) {
@@ -46,7 +45,7 @@ public class User {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
